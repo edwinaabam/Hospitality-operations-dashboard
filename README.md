@@ -1,6 +1,9 @@
+<p align="center">
+  <img src="./Grandstaydashboardpic.png" alt="GrandStay Operations Dashboard" width="100%">
+</p>
+
 # GrandStay Hospitality: Operations Insights & Analytics
 
-![GrandStay Dashboard](./Grandstaydashboardpic.png)
 
 ##  Business Context
 GrandStay Hospitality Group (GSH) operates more than **8,000 properties across 130 countries**, spanning luxury, business, and extended-stay segments. 
