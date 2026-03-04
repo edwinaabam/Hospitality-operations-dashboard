@@ -66,7 +66,7 @@ tab1, tab2 = st.tabs(["📊 Performance Dashboard", "📋 Project Strategy & Obj
 
 with tab1:
     # URL targeting Page 2 with nav hidden
-    looker_url = "https://lookerstudio.google.com/embed/reporting/0c82752a-bd59-4975-b0dc-e4fbfbf8c241/page/p_lox8q92g1d?nav_hide=true"
+    looker_url = "https://lookerstudio.google.com/reporting/0c82752a-bd59-4975-b0dc-e4fbfbf8c241"
     components.iframe(looker_url, height=850, scrolling=True)
 
 with tab2:
@@ -87,3 +87,6 @@ with tab2:
     st.divider()
     st.subheader("Expected Outcome")
     st.success("A defensible analytics framework to justify automation investment (Intelligent Travel Concierge).")
+
+
+    
