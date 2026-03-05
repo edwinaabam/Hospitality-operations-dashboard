@@ -5,8 +5,8 @@ import base64
 # --- PAGE CONFIGURATION ---
 st.set_page_config(
     page_title="GrandStay Operations Analytics",
-    #page_icon="🏨",
-    layout="centered", 
+    # page_icon="🏨",
+    layout="wide", # Allows us to control the exact pixel width of the center
 )
 
 # --- HELPER FUNCTION: ENCODE LOGO ---
@@ -20,22 +20,27 @@ def get_base64_logo(file_path):
 
 logo_base64 = get_base64_logo("logo.png")
 
-# --- CUSTOM CSS ---
+# --- CUSTOM CSS: BALANCED EXPANSION ---
 st.markdown("""
     <style>
+    /* 1. Main Container: Set to 1220px for a slight, controlled expansion */
     .main .block-container {
         padding-top: 0rem !important;
-        max-width: 1150px !important; 
+        padding-bottom: 0rem !important;
+        max-width: 1220px !important; 
         margin: auto;
     }
+
+    /* 2. Top Banner Protection: Ensures zero gap at the very top */
     header {visibility: hidden !important; height: 0px !important;}
     [data-testid="stHeader"] {display: none !important;}
+    [data-testid="stAppViewContainer"] {padding-top: 0px !important;}
 
-    /* Banner Fix: Slate Background & One-Line Title */
+    /* 3. The Banner: Aligned & Responsive */
     .banner-container {
         background-color: #1E293B; 
         width: 100%; 
-        padding: 15px 0px; 
+        padding: 18px 0px; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -44,19 +49,26 @@ st.markdown("""
         color: white;
         border-bottom: 4px solid #008080;
     }
+    
     .banner-logo {
         height: 55px;
         margin-right: 20px;
         filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2)); 
     }
+
+    /* 4. Single-Line Title Protection */
     .banner-text h2 {
         margin: 0;
-        font-size: 1.4rem;
+        font-size: 1.45rem; /* Tiny bump to match the 1220px width */
         font-weight: 600;
-        white-space: nowrap; 
+        white-space: nowrap !important; /* STRICT: No wrapping allowed */
         letter-spacing: 0.5px;
         color: #F8FAFC;
     }
+
+    /* 5. Tab Spacing */
+    .stTabs [data-baseweb="tab-list"] { gap: 30px; }
+    .stTabs [data-baseweb="tab"] { font-size: 16px; font-weight: 600; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -69,14 +81,14 @@ st.markdown(f'<div class="banner-container">{logo_img_html}<div class="banner-te
 tab1, tab2 = st.tabs(["Performance Dashboard", "Project Strategy & Tech"])
 
 with tab1:
+    # URL targeting Page 2
     looker_url = "https://lookerstudio.google.com/embed/reporting/0c82752a-bd59-4975-b0dc-e4fbfbf8c241/page/p_lox8q92g1d?nav_hide=true"
-    components.iframe(looker_url, height=800, scrolling=True)
+    # Increased height slightly to match the wider feel
+    components.iframe(looker_url, height=850, scrolling=True)
 
 with tab2:
     st.subheader("Project Executive Summary")
-    
     col1, col2 = st.columns(2)
-    
     with col1:
         st.markdown("""
         **Core Insights (Per Dashboard):**
@@ -84,7 +96,6 @@ with tab2:
         * **Automation Potential:** ~60% of inquiries are repetitive (Booking/Billing), making them prime candidates for AI.
         * **Impact:** Transitioning to an **Intelligent Travel Concierge** will reduce cost-per-contact and recover lost revenue.
         """)
-
     with col2:
         st.markdown("""
         **Technology Stack:**
@@ -92,6 +103,5 @@ with tab2:
         * **Application:** Streamlit (Python)
         * **Infrastructure:** GitHub & Streamlit Cloud
         """)
-
     st.divider()
     st.info("**Expected Outcome:** A defensible analytics framework to justify automation investment and establish continuous performance monitoring for 8,000+ properties.")
