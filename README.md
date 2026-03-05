@@ -4,8 +4,8 @@
   <img src="./Grandstaydashboardpic.png" alt="GrandStay Operations Dashboard" width="100%">
 </p>
 
-### [Live Dashboard: Access the GrandStay Analytics App](https://hospitality-operations.streamlit.app/)
 
+### <a href="https://hospitality-operations.streamlit.app/" target="_blank"> Live Dashboard: GrandStay Analytics App</a>
 
 ##  Business Context
 GrandStay Hospitality Group (GSH) operates more than **8,000 properties across 130 countries**, spanning luxury, business, and extended-stay segments. 
