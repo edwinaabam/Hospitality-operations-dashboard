@@ -4,6 +4,9 @@
   <img src="./Grandstaydashboardpic.png" alt="GrandStay Operations Dashboard" width="100%">
 </p>
 
+### [Live Dashboard: Access the GrandStay Analytics App](https://hospitality-operations.streamlit.app/)
+
+
 ##  Business Context
 GrandStay Hospitality Group (GSH) operates more than **8,000 properties across 130 countries**, spanning luxury, business, and extended-stay segments. 
 
@@ -30,14 +33,6 @@ The accompanying dashboard provides a defensible data model focusing on several 
 * **SLA Breach Rate:** Identifying where service levels fail to meet guest expectations.
 * **Repetitive Inquiry Rate:** Isolating the % of tickets that can be resolved via automation.
 * **Category Distribution:** Segmenting inquiries by type (Booking, Billing, Service) to prioritize AI training.
-
----
-
-## Expected Outcome
-This initiative enables GSH leadership to approve automation investments with confidence. By grounding decisions in measurable KPIs and cost modeling, the project establishes:
-* **Strategic Justification:** A clear "Why" for the Intelligent Travel Concierge.
-* **Revenue Recovery:** Identifying lost opportunities due to support bottlenecks.
-* **Continuous Monitoring:** Standards for scaling digital service global operations.
 
 ---
 

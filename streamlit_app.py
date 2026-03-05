@@ -20,81 +20,78 @@ def get_base64_logo(file_path):
 
 logo_base64 = get_base64_logo("logo.png")
 
-# --- CSS: FIXED TITLE LINE & LOGO CONTRAST ---
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
     .main .block-container {
         padding-top: 0rem !important;
-        max-width: 1100px !important; /* Slightly widened to help title fit */
+        max-width: 1150px !important; 
         margin: auto;
     }
-
     header {visibility: hidden !important; height: 0px !important;}
     [data-testid="stHeader"] {display: none !important;}
 
-    /* 1. The Banner - Darker Slate to make Gold Pop */
+    /* Banner Fix: Slate Background & One-Line Title */
     .banner-container {
-        background-color: #1E293B; /* Deep Slate/Charcoal - looks amazing with gold */
+        background-color: #1E293B; 
         width: 100%; 
         padding: 15px 0px; 
         display: flex;
         align-items: center;
         justify-content: center;
         margin-top: 0px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         color: white;
-        border-bottom: 3px solid #008080; /* Teal accent line at bottom */
+        border-bottom: 4px solid #008080;
     }
-    
-    /* 2. Logo Glow Fix */
     .banner-logo {
-        height: 50px;
+        height: 55px;
         margin-right: 20px;
-        /* Adds a subtle lift to the gold logo */
-        filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.2)); 
+        filter: drop-shadow(0px 0px 8px rgba(255, 255, 255, 0.2)); 
     }
-
-    /* 3. Force Title to One Line */
     .banner-text h2 {
         margin: 0;
-        font-size: 1.35rem; /* Slightly smaller to ensure fit */
+        font-size: 1.4rem;
         font-weight: 600;
-        white-space: nowrap; /* Prevents wrapping to next line */
+        white-space: nowrap; 
         letter-spacing: 0.5px;
         color: #F8FAFC;
     }
-    
-    .stTabs [data-baseweb="tab"] { font-size: 15px; }
     </style>
     """, unsafe_allow_html=True)
 
-# --- BANNER ---
-if logo_base64:
-    logo_img_html = f'<img src="data:image/png;base64,{logo_base64}" class="banner-logo">'
-else:
-    logo_img_html = '<img src="https://img.icons8.com/hotel" class="banner-logo">'
+# --- BANNER RENDER ---
+logo_img_html = f'<img src="data:image/png;base64,{logo_base64}" class="banner-logo">' if logo_base64 else '<img src="https://img.icons8.com/hotel" class="banner-logo">'
 
-st.markdown(f"""
-    <div class="banner-container">
-        {logo_img_html}
-        <div class="banner-text">
-            <h2>GrandStay Hospitality – Operations Insights & Analytics</h2>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown(f'<div class="banner-container">{logo_img_html}<div class="banner-text"><h2>GrandStay Hospitality – Operations Insights & Analytics</h2></div></div>', unsafe_allow_html=True)
 
-# --- TABS ---
-tab1, tab2 = st.tabs(["Performance Dashboard", "Project Strategy"])
+# --- TABS NAVIGATION ---
+tab1, tab2 = st.tabs(["Performance Dashboard", "Project Strategy & Tech"])
 
 with tab1:
     looker_url = "https://lookerstudio.google.com/embed/reporting/0c82752a-bd59-4975-b0dc-e4fbfbf8c241/page/p_lox8q92g1d?nav_hide=true"
     components.iframe(looker_url, height=800, scrolling=True)
 
 with tab2:
-    st.markdown("### Strategic Project Overview")
-    st.write("GrandStay Hospitality Group (GSH) operations analysis.")
+    st.subheader("Project Executive Summary")
+    
     col1, col2 = st.columns(2)
+    
     with col1:
-        st.info("**Challenge:** High SLA breaches & repetitive inquiries.")
+        st.markdown("""
+        **Core Insights (Per Dashboard):**
+        * **SLA Reliability:** High breach rates during peak hours necessitate 24/7 digital responsiveness.
+        * **Automation Potential:** ~60% of inquiries are repetitive (Booking/Billing), making them prime candidates for AI.
+        * **Impact:** Transitioning to an **Intelligent Travel Concierge** will reduce cost-per-contact and recover lost revenue.
+        """)
+
     with col2:
-        st.success("**Goal:** ROI validation for AI Concierge.")
+        st.markdown("""
+        **Technology Stack:**
+        * **Visualization:** Looker Studio (BigQuery Integration)
+        * **Application:** Streamlit (Python)
+        * **Infrastructure:** GitHub & Streamlit Cloud
+        """)
+
+    st.divider()
+    st.info("**Expected Outcome:** A defensible analytics framework to justify automation investment and establish continuous performance monitoring for 8,000+ properties.")
